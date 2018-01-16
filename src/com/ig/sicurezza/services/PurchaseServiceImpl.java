@@ -35,7 +35,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private void sendNotification(Customer cliente, List<PurchaseItem> items) {
 		String from = "ventas@dsicurezza.com";
 		String to = "ventas@dsicurezza.com";
-		String pass = "andresdamian"; 
+		 
         Properties props = System.getProperties();
         String host = "smtp.gmail.com";
         props.put("mail.smtp.starttls.enable", "true");
