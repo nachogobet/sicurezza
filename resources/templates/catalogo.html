@@ -9,6 +9,8 @@
 <link rel="stylesheet" type="text/css" media="all"
 	href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <script type="text/javascript" th:src="@{/js/sicurezza.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 
 
 
@@ -47,8 +49,27 @@
 			</div>
 		</div>
 	</div>
-	<input id="processButton" type="button" value="Hacer pedido"
-		onclick="processPurchase();" />
+	<div class="center-div">
+		<form>
+			<div class="form-group">
+				<label for="empresa">Empresa</label> <input
+					class="form-control" id="empresa"
+					placeholder="Ingresar empresa"/>
+			</div>
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input
+					class="form-control" id="nombre"
+					placeholder="Ingresar nombre personal"/>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label> <input
+					class="form-control" id="email"
+					placeholder="Ingresar email"/>
+			</div>
+		</form>
+		<button type="button" onclick="processPurchase();"
+			class="btn btn-dark center-btn">Hacer pedido</button>
+	</div>
 
 </body>
 </html>

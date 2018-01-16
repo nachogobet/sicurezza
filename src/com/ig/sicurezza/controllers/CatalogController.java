@@ -7,19 +7,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ig.sicurezza.models.Category;
-import com.ig.sicurezza.models.Purchase;
 import com.ig.sicurezza.services.CatalogService;
+import com.ig.sicurezza.services.PurchaseService;
 
 @Controller
 public class CatalogController {
 	
 	@Autowired
-	private CatalogService catalogService;;
+	private CatalogService catalogService;
+	
+	@Autowired
+	private PurchaseService purchaseService;
 	
 	@RequestMapping("/catalogodigital")
 	public String getCatalog(Model model) throws SQLException {
@@ -29,7 +32,8 @@ public class CatalogController {
 	}
 	
 	@RequestMapping(value = "/processCatalog", method=RequestMethod.POST)
-	public String processForm(@ModelAttribute(value="purchase") Purchase purchase) {
-		return "catalogo";
+	public String processForm(@RequestBody String purchase) throws SQLException {
+		purchaseService.processPurchase(purchase);
+		return "pedido_confirmado";
 	}
 }
