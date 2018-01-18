@@ -1,2 +1,2 @@
-web: java $JAVA_OPTS -Dserver.port=$PORT -cp target/classes/:target/dependency
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
 worker: java -jar target/*.jar
