@@ -28,10 +28,11 @@ public class CatalogController {
 	public String getCatalog(Model model) throws SQLException {
 		try{
 		List <Category> catalog = catalogService.getCatalog();
+		model.addAttribute("catalogo", catalog);
 		} catch(SQLException e){
 			e.printStackTrace();
 		}
-		model.addAttribute("catalogo", catalog);
+		
 		return "catalogo";
 	}
 	
