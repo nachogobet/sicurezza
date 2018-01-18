@@ -20,7 +20,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.ig.sicurezza.SicurezzaApplication.java</mainClass>
+							<mainClass>com.ig.sicurezza.SicurezzaApplication</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
