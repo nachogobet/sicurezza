@@ -1,5 +1,6 @@
 package com.ig.sicurezza.services;
 
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,9 +21,14 @@ public class CatalogServiceImpl implements CatalogService {
 	
 	private List<Category> catalog;
 	
-	public CatalogServiceImpl() throws SQLException{
-		this.connection = connectDB();
+	public CatalogServiceImpl() throws SQLException, URISyntaxException{
+		this.connection = getConnection();
 		this.catalog = new ArrayList<Category>();
+	}
+	
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+	    String dbUrl = System.getenv("JDBC_DATABASE_URL");
+	    return DriverManager.getConnection(dbUrl);
 	}
 
 	@Override
@@ -71,13 +77,5 @@ public class CatalogServiceImpl implements CatalogService {
 				catalog.add(newCat);
 			}
 		}
-	}
-
-	private Connection connectDB() throws SQLException{
-		Connection conn = DriverManager.getConnection(
-				"jdbc:postgresql://127.0.0.1:5432/sicurezza", "postgres",
-				"Weblogic1");
-
-		return conn;
 	}
 }
