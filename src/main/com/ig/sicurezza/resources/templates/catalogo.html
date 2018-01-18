@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Sicurezza - Catalogo Digital</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/sicurezza.css" th:href="@{/css/sicurezza.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{/js/sicurezza.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+</head>
+<body>
+	<img class="logo" src="http://www.dsicurezza.com.ar/img/logo.png"
+		alt="sicurezza-logo"></img>
+	<div class="container texto-izquierda">
+		<div class="catalogo col" th:each="cat : ${catalogo}">
+			<h1>
+				<span th:text="${cat.name}" th:remove="tag">title</span>
+			</h1>
+			<div class="col texto-izquierda" th:each="sub : ${cat.subcategories}">
+				<h3>
+					<span th:text="${sub.name}" class="label label-primary"></span>
+				</h3>
+				<div class="row" th:with="currentSub=${sub.name}"
+					th:each="prod : ${sub.products}">
+					<div class="col-9">
+						<span th:text="${prod.name}" class="label label-primary pull-left"></span>
+					</div>
+					<div class="col" th:if="${prod.price != 0.0}">
+						<span>$ </span> <span th:text="${prod.price}"
+							class="label label-primary pull-left"></span>
+					</div>
+					<div class="col" th:if="${prod.price == 0.0}">
+						<span>U$S </span> <span th:text="${prod.priceDollars}"
+							class="label label-primary pull-left"></span>
+					</div>
+					<div class="col cantidad">
+						<input class="amount" th:id="${prod.id}" type="number"
+							name="quantity" min="0" max="100000" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="center-div">
+		<form>
+			<div class="form-group">
+				<label for="empresa">Empresa</label> <input
+					class="form-control" id="empresa"
+					placeholder="Ingresar empresa"/>
+			</div>
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input
+					class="form-control" id="nombre"
+					placeholder="Ingresar nombre personal"/>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label> <input
+					class="form-control" id="email"
+					placeholder="Ingresar email"/>
+			</div>
+		</form>
+		<button type="button" onclick="processPurchase();"
+			class="btn btn-dark center-btn">Hacer pedido</button>
+	</div>
+
+</body>
+</html>
