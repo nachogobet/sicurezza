@@ -24,9 +24,13 @@ public class CatalogController {
 	@Autowired
 	private PurchaseService purchaseService;
 	
-	@RequestMapping("/catalogodigital")
+	@RequestMapping("/")
 	public String getCatalog(Model model) throws SQLException {
+		try{
 		List <Category> catalog = catalogService.getCatalog();
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
 		model.addAttribute("catalogo", catalog);
 		return "catalogo";
 	}
