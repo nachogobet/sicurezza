@@ -21,8 +21,11 @@ Class-Path: lib/spring-boot-1.3.2.RELEASE.jar lib/spring-core-4.2.4.RE
   lib/thymeleaf-spring4-2.1.4.RELEASE.jar lib/thymeleaf-2.1.4.RELEASE.
  jar lib/ognl-3.0.8.jar lib/javassist-3.18.1-GA.jar lib/unbescape-1.1.
  0.RELEASE.jar lib/slf4j-api-1.7.13.jar lib/thymeleaf-layout-dialect-1
- .3.1.jar lib/groovy-2.4.4.jar lib/tomcat-embed-el-8.0.30.jar lib/json
- -20140107.jar lib/mail-1.4.jar lib/activation-1.1.jar
+ .3.1.jar lib/groovy-2.4.4.jar lib/spring-boot-starter-jdbc-1.5.9.RELE
+ ASE.jar lib/tomcat-jdbc-8.0.30.jar lib/tomcat-juli-8.0.30.jar lib/spr
+ ing-jdbc-4.2.4.RELEASE.jar lib/spring-tx-4.2.4.RELEASE.jar lib/tomcat
+ -embed-el-8.0.30.jar lib/json-20140107.jar lib/mail-1.4.jar lib/activ
+ ation-1.1.jar
 Build-Jdk: 1.8.0_131
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
