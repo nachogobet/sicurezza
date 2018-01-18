@@ -17,25 +17,25 @@ import com.ig.sicurezza.services.PurchaseService;
 
 @Controller
 public class CatalogController {
-	
+
 	@Autowired
 	private CatalogService catalogService;
-	
+
 	@Autowired
 	private PurchaseService purchaseService;
-	
+
 	@RequestMapping("/")
 	public String getCatalog(Model model) throws SQLException {
 		try{
-		List <Category> catalog = catalogService.getCatalog();
-		model.addAttribute("catalogo", catalog);
+			List <Category> catalog = catalogService.getCatalog();
+			model.addAttribute("catalogo", catalog);
 		} catch(SQLException e){
 			e.printStackTrace();
 		}
-		
+
 		return "catalogo";
 	}
-	
+
 	@RequestMapping(value = "/processCatalog", method=RequestMethod.POST)
 	public String processForm(@RequestBody String purchase) throws SQLException {
 		purchaseService.processPurchase(purchase);
