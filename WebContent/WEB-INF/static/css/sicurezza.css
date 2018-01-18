@@ -1,0 +1,28 @@
+.catalogo {
+	margin-top: 10%;
+}
+
+.texto-izquierda {
+	text-align: left;
+}
+
+.cantidad {
+	width: 100%
+}
+
+.center-div {
+	margin: 5% auto;
+	width: 50%;
+	border: 3px solid green;
+	padding: 10px;
+	text-align: center
+}
+
+.center-btn {
+	margin-top: 5%;
+}
+
+.logo {
+	margin-left: 2%;
+	margin-top: 2%;
+}
