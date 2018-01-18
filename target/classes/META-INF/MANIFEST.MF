@@ -3,7 +3,28 @@ Implementation-Title: sicurezza
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: igobet
 Implementation-Vendor-Id: sicurezza
+Class-Path: lib/postgresql-9.4.1207.jre7.jar lib/spring-boot-starter-w
+ eb-1.3.2.RELEASE.jar lib/spring-boot-starter-1.3.2.RELEASE.jar lib/sp
+ ring-boot-1.3.2.RELEASE.jar lib/spring-boot-autoconfigure-1.3.2.RELEA
+ SE.jar lib/spring-boot-starter-logging-1.3.2.RELEASE.jar lib/logback-
+ classic-1.1.3.jar lib/logback-core-1.1.3.jar lib/jcl-over-slf4j-1.7.1
+ 3.jar lib/jul-to-slf4j-1.7.13.jar lib/log4j-over-slf4j-1.7.13.jar lib
+ /spring-core-4.2.4.RELEASE.jar lib/snakeyaml-1.16.jar lib/spring-boot
+ -starter-validation-1.3.2.RELEASE.jar lib/hibernate-validator-5.2.2.F
+ inal.jar lib/validation-api-1.1.0.Final.jar lib/jboss-logging-3.3.0.F
+ inal.jar lib/classmate-1.1.0.jar lib/jackson-databind-2.6.5.jar lib/j
+ ackson-annotations-2.6.5.jar lib/jackson-core-2.6.5.jar lib/spring-we
+ b-4.2.4.RELEASE.jar lib/spring-aop-4.2.4.RELEASE.jar lib/aopalliance-
+ 1.0.jar lib/spring-beans-4.2.4.RELEASE.jar lib/spring-context-4.2.4.R
+ ELEASE.jar lib/spring-webmvc-4.2.4.RELEASE.jar lib/spring-expression-
+ 4.2.4.RELEASE.jar lib/spring-boot-starter-thymeleaf-1.3.2.RELEASE.jar
+  lib/thymeleaf-spring4-2.1.4.RELEASE.jar lib/thymeleaf-2.1.4.RELEASE.
+ jar lib/ognl-3.0.8.jar lib/javassist-3.18.1-GA.jar lib/unbescape-1.1.
+ 0.RELEASE.jar lib/slf4j-api-1.7.13.jar lib/thymeleaf-layout-dialect-1
+ .3.1.jar lib/groovy-2.4.4.jar lib/tomcat-embed-el-8.0.30.jar lib/json
+ -20140107.jar lib/mail-1.4.jar lib/activation-1.1.jar
 Build-Jdk: 1.8.0_131
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: com.ig.sicurezza.SicurezzaApplication.java
 
