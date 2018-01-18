@@ -1,5 +1,6 @@
 package com.ig.sicurezza.services;
 
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,8 +22,8 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	private Connection connection;
 
-	public PurchaseServiceImpl() throws SQLException{
-		this.connection = connectDB();
+	public PurchaseServiceImpl() throws SQLException, URISyntaxException{
+		this.connection = getConnection();
 	}
 
 	@Override
@@ -36,38 +37,38 @@ public class PurchaseServiceImpl implements PurchaseService {
 		String from = "sicurezza.pedidos";
 		String to = "ventas@dsicurezza.com";
 		String pass = "pedidos.sicurezza"; 
-        Properties props = System.getProperties();
-        String host = "smtp.gmail.com";
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.user", from);
-        props.put("mail.smtp.password", pass);
-        props.put("mail.smtp.port", "587");
-        props.put("mail.smtp.auth", "true");
+		Properties props = System.getProperties();
+		String host = "smtp.gmail.com";
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.user", from);
+		props.put("mail.smtp.password", pass);
+		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.auth", "true");
 
-        Session session = Session.getDefaultInstance(props);
-        MimeMessage message = new MimeMessage(session);
+		Session session = Session.getDefaultInstance(props);
+		MimeMessage message = new MimeMessage(session);
 
-        try {
-            message.setFrom(new InternetAddress(from));
-            InternetAddress toAddress = new InternetAddress(to);
+		try {
+			message.setFrom(new InternetAddress(from));
+			InternetAddress toAddress = new InternetAddress(to);
 
-            message.addRecipient(Message.RecipientType.TO, toAddress);
+			message.addRecipient(Message.RecipientType.TO, toAddress);
 
-            message.setSubject("Pedido Online - " + cliente.getCompany() );
-            message.setText(getMailBody(cliente, items));
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-        }
-        catch (AddressException ae) {
-            ae.printStackTrace();
-        }
-        catch (MessagingException me) {
-            me.printStackTrace();
-        }
-    }
+			message.setSubject("Pedido Online - " + cliente.getCompany() );
+			message.setText(getMailBody(cliente, items));
+			Transport transport = session.getTransport("smtp");
+			transport.connect(host, from, pass);
+			transport.sendMessage(message, message.getAllRecipients());
+			transport.close();
+		}
+		catch (AddressException ae) {
+			ae.printStackTrace();
+		}
+		catch (MessagingException me) {
+			me.printStackTrace();
+		}
+	}
 
 	private String getMailBody(Customer cliente, List<PurchaseItem> items) {
 		String mailBody = "";
@@ -75,9 +76,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 		mailBody += "\nEmpresa: " + cliente.getCompany();
 		mailBody += "\nNombre: " + cliente.getName();
 		mailBody += "\nEmail: " + cliente.getEmail();
-		
+
 		mailBody += "\n\nItems:\n";
-		
+
 		for(PurchaseItem item : items){
 			mailBody += "\n\n"+ item.getName() + " - Cantidad: " + item.getAmount();
 			if(item.getPrice() != 0.0)
@@ -85,7 +86,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 			else
 				mailBody += " - Precio unitario: U$S " + item.getPriceDollar();
 		}
-		
+
 		return mailBody;
 	}
 
@@ -121,12 +122,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return productList;
 	}
 
-	private Connection connectDB() throws SQLException{
-		Connection conn = DriverManager.getConnection(
-				"jdbc:postgresql://127.0.0.1:5432/sicurezza", "postgres",
-				"Weblogic1");
-
-		return conn;
+	private static Connection getConnection() throws URISyntaxException, SQLException {
+		String dbUrl = System.getenv("JDBC_DATABASE_URL");
+		return DriverManager.getConnection(dbUrl);
 	}
 
 }
