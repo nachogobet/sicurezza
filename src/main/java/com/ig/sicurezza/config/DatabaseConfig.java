@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource({ "classpath:persistence.properties" })
+@PropertySource({ "classpath:application.properties" })
 public class DatabaseConfig {
     @Bean
     @Primary
