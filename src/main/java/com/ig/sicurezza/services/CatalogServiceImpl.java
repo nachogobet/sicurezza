@@ -28,7 +28,7 @@ public class CatalogServiceImpl implements CatalogService {
 	
 	private static Connection getConnection() throws URISyntaxException, SQLException {
 	    String dbUrl = System.getenv("JDBC_DATABASE_URL");
-	    return DriverManager.getConnection(dbUrl);
+	    return DriverManager.getConnection(dbUrl,"","");
 	}
 
 	@Override
