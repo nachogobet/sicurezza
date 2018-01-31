@@ -2,7 +2,9 @@ package com.ig.sicurezza.controllers;
 
 
 import java.sql.SQLException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,10 @@ public class CatalogController {
 	public String getCatalog(Model model) throws SQLException {
 		try{
 			List <Category> catalog = catalogService.getCatalog();
+			Set<Category> hs = new HashSet<Category>();
+			hs.addAll(catalog);
+			catalog.clear();
+			catalog.addAll(hs);
 			model.addAttribute("catalogo", catalog);
 		} catch(SQLException e){
 			e.printStackTrace();
