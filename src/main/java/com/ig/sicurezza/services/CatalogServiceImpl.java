@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.ig.sicurezza.models.Category;
@@ -16,7 +15,6 @@ import com.ig.sicurezza.models.Product;
 import com.ig.sicurezza.models.SubCategory;
 
 @Service
-@Scope("request")
 public class CatalogServiceImpl implements CatalogService {
 	
 	private Connection connection;
@@ -35,6 +33,7 @@ public class CatalogServiceImpl implements CatalogService {
 
 	@Override
 	public List<Category> getCatalog() throws SQLException {
+		this.catalog.clear();
 		ResultSet rs = connection.createStatement().executeQuery("SELECT p.id, p.nombre, p.precio, p.precio_dolar, sc.nombre, c.nombre FROM public.producto AS p JOIN public.subcategoria AS sc ON p.subcategoria=sc.id JOIN public.categoria AS c ON sc.categoria=c.id;");
 		while (rs.next()){
 			mapProduct(rs.getLong(1),rs.getString(2), rs.getFloat(3), rs.getFloat(4), rs.getString(5), rs.getString(6));
