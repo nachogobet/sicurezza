@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.ig.sicurezza.models.Category;
@@ -15,6 +16,7 @@ import com.ig.sicurezza.models.Product;
 import com.ig.sicurezza.models.SubCategory;
 
 @Service
+@Scope("request")
 public class CatalogServiceImpl implements CatalogService {
 	
 	private Connection connection;
