@@ -36,7 +36,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private void sendNotification(Customer cliente, List<PurchaseItem> items) throws SQLException {
 		String from = "sicurezza.pedidos";
 		String to = "ventas@dsicurezza.com";
-		String pass = "pedidos.sicurezza"; 
+		String pass = "Weblogic4!"; 
 		Properties props = System.getProperties();
 		String host = "smtp.gmail.com";
 		props.put("mail.smtp.starttls.enable", "true");
