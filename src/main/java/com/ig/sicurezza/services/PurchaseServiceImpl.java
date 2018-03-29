@@ -34,7 +34,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	private void sendNotification(Customer cliente, List<PurchaseItem> items) throws SQLException {
-		String from = "sicurezza.pedidos";
+		String from = "sicurezza.pedidos@gmail.com";
 		String to = "ventas@dsicurezza.com";
 		String pass = "pedidos.sicurezza"; 
 		Properties props = System.getProperties();
