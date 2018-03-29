@@ -34,7 +34,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	private void sendNotification(Customer cliente, List<PurchaseItem> items) throws SQLException {
-		String from = "sicurezza.pedidos@gmail.com";
+		String from = "sicurezza.pedidos";
 		String to = "ventas@dsicurezza.com";
 		String pass = "pedidos.sicurezza"; 
 		Properties props = System.getProperties();
@@ -47,6 +47,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		props.put("mail.smtp.auth", "true");
 
 		Session session = Session.getDefaultInstance(props);
+		session.setDebug(true);
 		MimeMessage message = new MimeMessage(session);
 
 		try {
